@@ -1,0 +1,258 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <form action="/admin" method="post" enctype="multipart/form-data" style="margin-top:20px;" >
+        <div class="mb-3 row">
+            <label for="number_certificate">Number Certificate</label>
+            <input type="text" name="number_certificate" id="number_certificate" class="form-control" style="width:300px; margin-left:10px;" required>
+        </div>
+        <div class="mb-3 row">
+            <label for="item_category">Item Category</label>
+            <input type="text" name="item_category" id="item_category" class="form-control" style="width:300px; margin-left:10px;" required>
+        </div>
+        <div class="mb-3 row">
+            <label for="item_brand">Item Brand</label>
+            <input type="text" name="item_brand" id="item_brand" class="form-control" style="width:300px; margin-left:10px;" required>
+        </div>
+        <div class="mb-3 row">
+            <label for="case_submitted_time">Case Submitted Time</label>
+            <input type="text" name="case_submitted_time" id="case_submitted_time" class="form-control" style="width:300px; margin-left:10px;" required>
+        </div>
+        <div class="mb-3 row">
+            <label for="case_completed">Case Completed</label>
+            <input type="text" name="case_completed" id="case_completed" class="form-control" style="width:300px; margin-left:10px;" required>
+        </div>
+        <div class="mb-3 row">
+            <label for="image_1">Image Number 1</label>
+            <input  type="file" id="image_1" name="file1" accept="image/*" required>
+            <div>
+                <button id="removeButton1" style="display: none;">Открепить</button>
+                <div id="preview1" style="margin-top: 15px;"></div>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="image_2">Image Number 2</label>
+            <input type="file" name="file2" id="image_2" accept="image/*" required>
+            <div>
+                <button id="removeButton2" style="display: none;">Открепить</button>
+                <div id="preview2" style="margin-top: 15px;"></div>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="image_3">Image Number 3</label>
+            <input type="file" id="image_3" name="file3" accept="image/*" required>
+            <div>
+                <button id="removeButton3" style="display: none;">Открепить</button>
+                <div id="preview3" style="margin-top: 15px;"></div>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="image_4">Image Number 4</label>
+            <input type="file" id="image_4" name="file4" accept="image/*" required>
+            <div>
+                <button id="removeButton4" style="display: none;">Открепить</button>
+                <div id="preview4" style="margin-top: 15px;"></div>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="image_5">Image Number 5</label>
+            <input type="file" id="image_5" name="file5" accept="image/*" required>
+            <div>
+                <button id="removeButton5" style="display: none;">Открепить</button>
+                <div id="preview5" style="margin-top: 15px;"></div>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="image_6">Image Number 6</label>
+            <input type="file" id="image_6" name="file6" accept="image/*" required>
+            <div>
+                <button id="removeButton6" style="display: none;">Открепить</button>
+                <div id="preview6" style="margin-top: 15px;"></div>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="image_7">QR-code</label>
+            <input type="file" name="file7" id="image_7" accept="image/*" required>
+            <div>
+                <button id="removeButton7" style="display: none;">Открепить</button>
+                <div id="preview7" style="margin-top: 15px;"></div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <button type="submit">Upload</button>
+        </div>
+    </form>
+
+    <script>
+        const fileInput1 = document.getElementById('image_1');
+        const preview1 = document.getElementById('preview1');
+        const removeButton1 = document.getElementById('removeButton1');
+
+        const fileInput2 = document.getElementById('image_2');
+        const preview2 = document.getElementById('preview2');
+        const removeButton2 = document.getElementById('removeButton2');
+
+        const fileInput3 = document.getElementById('image_3');
+        const preview3 = document.getElementById('preview3');
+        const removeButton3 = document.getElementById('removeButton3');
+
+        const fileInput4 = document.getElementById('image_4');
+        const preview4 = document.getElementById('preview4');
+        const removeButton4 = document.getElementById('removeButton4');
+
+        const fileInput5 = document.getElementById('image_5');
+        const preview5 = document.getElementById('preview5');
+        const removeButton5 = document.getElementById('removeButton5');
+
+        const fileInput6 = document.getElementById('image_6');
+        const preview6 = document.getElementById('preview6');
+        const removeButton6 = document.getElementById('removeButton6');
+
+        const fileInput7 = document.getElementById('image_7');
+        const preview7 = document.getElementById('preview7');
+        const removeButton7 = document.getElementById('removeButton7');
+
+        fileInput1.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const img = document.createElement('img');
+                img.src = URL.createObjectURL(file);
+                img.style.maxWidth = '200px';
+                img.style.maxHeight = '200px';
+                preview1.innerHTML = ''; // Очистка предыдущего содержимого
+                preview1.appendChild(img);
+                removeButton1.style.marginTop = '15px';
+                removeButton1.style.display = 'inline'; // Показать кнопку "Открепить"
+            }
+        });
+
+        removeButton1.addEventListener('click', function() {
+            preview1.innerHTML = ''; // Очистка изображения
+            fileInput1.value = ''; // Сброс input
+            removeButton1.style.display = 'none'; // Скрыть кнопку "Открепить"
+        });
+
+        fileInput2.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const img = document.createElement('img');
+                img.src = URL.createObjectURL(file);
+                img.style.maxWidth = '200px';
+                img.style.maxHeight = '200px';
+                preview2.innerHTML = ''; // Очистка предыдущего содержимого
+                preview2.appendChild(img);
+                removeButton2.style.marginTop = '15px';
+                removeButton2.style.display = 'inline'; // Показать кнопку "Открепить"
+            }
+        });
+
+        removeButton2.addEventListener('click', function() {
+            preview2.innerHTML = ''; // Очистка изображения
+            fileInput2.value = ''; // Сброс input
+            removeButton2.style.display = 'none'; // Скрыть кнопку "Открепить"
+        });
+
+        fileInput3.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const img = document.createElement('img');
+                img.src = URL.createObjectURL(file);
+                img.style.maxWidth = '200px';
+                img.style.maxHeight = '200px';
+                preview3.innerHTML = ''; // Очистка предыдущего содержимого
+                preview3.appendChild(img);
+                removeButton3.style.marginTop = '15px';
+                removeButton3.style.display = 'inline'; // Показать кнопку "Открепить"
+            }
+        });
+
+        removeButton3.addEventListener('click', function() {
+            preview3.innerHTML = ''; // Очистка изображения
+            fileInput3.value = ''; // Сброс input
+            removeButton3.style.display = 'none'; // Скрыть кнопку "Открепить"
+        });
+
+        fileInput4.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const img = document.createElement('img');
+                img.src = URL.createObjectURL(file);
+                img.style.maxWidth = '200px';
+                img.style.maxHeight = '200px';
+                preview4.innerHTML = ''; // Очистка предыдущего содержимого
+                preview4.appendChild(img);
+                removeButton4.style.marginTop = '15px';
+                removeButton4.style.display = 'inline'; // Показать кнопку "Открепить"
+            }
+        });
+
+        removeButton4.addEventListener('click', function() {
+            preview4.innerHTML = ''; // Очистка изображения
+            fileInput4.value = ''; // Сброс input
+            removeButton4.style.display = 'none'; // Скрыть кнопку "Открепить"
+        });
+
+        fileInput5.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const img = document.createElement('img');
+                img.src = URL.createObjectURL(file);
+                img.style.maxWidth = '200px';
+                img.style.maxHeight = '200px';
+                preview5.innerHTML = ''; // Очистка предыдущего содержимого
+                preview5.appendChild(img);
+                removeButton5.style.marginTop = '15px';
+                removeButton5.style.display = 'inline'; // Показать кнопку "Открепить"
+            }
+        });
+
+        removeButton5.addEventListener('click', function() {
+            preview5.innerHTML = ''; // Очистка изображения
+            fileInput5.value = ''; // Сброс input
+            removeButton5.style.display = 'none'; // Скрыть кнопку "Открепить"
+        });
+
+        fileInput6.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const img = document.createElement('img');
+                img.src = URL.createObjectURL(file);
+                img.style.maxWidth = '200px';
+                img.style.maxHeight = '200px';
+                preview6.innerHTML = ''; // Очистка предыдущего содержимого
+                preview6.appendChild(img);
+                removeButton6.style.marginTop = '15px';
+                removeButton6.style.display = 'inline'; // Показать кнопку "Открепить"
+            }
+        });
+
+        removeButton6.addEventListener('click', function() {
+            preview6.innerHTML = ''; // Очистка изображения
+            fileInput6.value = ''; // Сброс input
+            removeButton6.style.display = 'none'; // Скрыть кнопку "Открепить"
+        });
+
+        fileInput7.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const img = document.createElement('img');
+                img.src = URL.createObjectURL(file);
+                img.style.maxWidth = '200px';
+                img.style.maxHeight = '200px';
+                preview7.innerHTML = ''; // Очистка предыдущего содержимого
+                preview7.appendChild(img);
+                removeButton7.style.marginTop = '15px';
+                removeButton7.style.display = 'inline'; // Показать кнопку "Открепить"
+            }
+        });
+
+        removeButton7.addEventListener('click', function() {
+            preview7.innerHTML = ''; // Очистка изображения
+            fileInput7.value = ''; // Сброс input
+            removeButton7.style.display = 'none'; // Скрыть кнопку "Открепить"
+        });
+
+        
+    </script>
+
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block titel %}
+    Обновление текста
+{% endblock %}
+
+{% block body %}
+
+    <h1>Обновление текста</h1>
+    <form  method="post" class="row g-3" enctype="multipart/form-data">
+        <input type="text" name="number_certificate" id="number_certificate" class="form-control" value="{{ article.number_certificate }}"><br>
+        <textarea name="item_category" id="item_category" class="form-control">{{ article.item_category }}</textarea><br>
+        <textarea name="item_brand" id="item_brand" class="form-control">{{ article.item_brand }}</textarea><br>
+        <textarea name="case_submitted_time" id="case_submitted_time" class="form-control">{{ article.case_submitted_time }}</textarea><br>
+        <textarea name="case_completed" id="case_completed" class="form-control">{{ article.case_completed }}</textarea><br>
+
+        <img src="/posts/{{ article.number_certificate }}/imgobr1" alt="sdf1" class="form-control" style="width:150px; height:150px;">
+        <div class="mb-3 row">
+            <label for="image_1">Image Number 1</label>
+            <input  type="file" id="image_1" name="file1" accept="image/*" required>
+        </div>
+
+        <img src="/posts/{{ article.number_certificate }}/imgobr2" alt="sdf2" class="form-control" style="width:150px; height:150px;">
+        <div class="mb-3 row">
+            <label for="image_2">Image Number 2</label>
+            <input type="file" name="file2" id="image_2" accept="image/*" required>
+        </div>
+
+        <img src="/posts/{{ article.number_certificate }}/imgobr3" alt="sdf3" class="form-control" style="width:150px; height:150px;">
+        <div class="mb-3 row">
+            <label for="image_3">Image Number 3</label>
+            <input type="file" id="image_3" name="file3" accept="image/*" required>
+        </div>
+
+        <img src="/posts/{{ article.number_certificate }}/imgobr4" alt="sdf4" class="form-control" style="width:150px; height:150px;">
+        <div class="mb-3 row">
+            <label for="image_4">Image Number 4</label>
+            <input type="file" id="image_4" name="file4" accept="image/*" required>
+        </div>
+
+        <img src="/posts/{{ article.number_certificate }}/imgobr5" alt="sdf5" class="form-control" style="width:150px; height:150px;">
+        <div class="mb-3 row">
+            <label for="image_5">Image Number 5</label>
+            <input type="file" id="image_5" name="file5" accept="image/*" required>
+        </div>
+
+        <img src="/posts/{{ article.number_certificate }}/imgobr6" alt="sdf6" class="form-control" style="width:150px; height:150px;">
+        <div class="mb-3 row">
+            <label for="image_6">Image Number 6</label>
+            <input type="file" id="image_6" name="file6" accept="image/*" required>
+        </div>
+
+        <img src="/posts/{{ article.number_certificate }}/imgobr_qr" alt="sdfqr" class="form-control" style="width:150px; height:150px;">
+        <div class="mb-3 row">
+            <label for="file7">QR-code</label>
+            <input type="file" name="file7" id="file7" accept="image/*" required>
+        </div>
+
+        <input type="submit" class="btn btn-success" value="Обновить">
+    </form>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block titel %}
+    Главная страница
+{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h1>Все текста</h1>
+
+    {% if articles|length > 0 %}
+        {% for el in articles %}
+        <div class="alert alert-info">
+            <h2>{{ el.number_certificate }}</h2>
+            <p>{{ el.item_category }}</p>
+            <p>{{ el.item_brand }}</p>
+            <p>{{ el.case_submitted_time }}</p>
+            <p>{{ el.case_completed }}</p>
+
+
+            <a class="btn btn-warning" href="/posts/{{ el.number_certificate }}">Детальнее</a>
+            <a class="btn btn-danger" href="/posts/{{ el.number_certificate }}/del">Удалить</a>
+            <a class="btn btn-success" href="/posts/{{ el.number_certificate }}/update">Обновить</a>
+        </div>
+        {% endfor %}
+    {% else %}
+    <p>Нету еще текста на сайте</p>
+    {% endif %}
+</div>
+{% endblock %}
